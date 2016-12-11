@@ -1,0 +1,885 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="Lift is short, live it, love it, enjoy it." />
+
+
+
+  <meta name="keywords" content="jquery," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/images/bitbug_favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content="我们要遵循jQuery的原则，编写的扩展方法能支持链式调用、具备默认值和过滤特定元素，使得扩展方法看上去和jQuery本身的方法没有什么区别">
+<meta property="og:type" content="article">
+<meta property="og:title" content="编写jQuery插件">
+<meta property="og:url" content="http://yoursite.com/2016/10/29/jqueryextensions/index.html">
+<meta property="og:site_name" content="Vicky's Blog">
+<meta property="og:description" content="我们要遵循jQuery的原则，编写的扩展方法能支持链式调用、具备默认值和过滤特定元素，使得扩展方法看上去和jQuery本身的方法没有什么区别">
+<meta property="og:updated_time" content="2016-10-29T09:00:32.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="编写jQuery插件">
+<meta name="twitter:description" content="我们要遵循jQuery的原则，编写的扩展方法能支持链式调用、具备默认值和过滤特定元素，使得扩展方法看上去和jQuery本身的方法没有什么区别">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> 编写jQuery插件 | Vicky's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Welcome to my land.</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            About
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              编写jQuery插件
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-10-29T14:56:58+08:00" content="2016-10-29">
+            2016-10-29
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/技术类/" itemprop="url" rel="index">
+                  <span itemprop="name">技术类</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <!--
+              <a href="/2016/10/29/jqueryextensions/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/29/jqueryextensions/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/10/29/jqueryextensions/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><blockquote>
+<p>我们要遵循jQuery的原则，编写的扩展方法能支持<strong>链式调用</strong>、<strong>具备默认值</strong>和<strong>过滤特定元素</strong>，使得扩展方法看上去和jQuery本身的方法没有什么区别</p>
+</blockquote>
+<hr>
+<a id="more"></a>
+<p><strong>目的</strong>：<br>jQuery内置的方法永远不可能满足所有的需求,我们需要根据需求来拓展jQuery方法已实现继承复用。</p>
+<p><strong>实现方法</strong>：<br>给jQuery对象绑定一个新方法是通过扩展$.fn对象实现的。</p>
+<blockquote>
+<h2 id="CASE-1-高亮显示某些DOM元素-："><a href="#CASE-1-高亮显示某些DOM元素-：" class="headerlink" title="CASE 1: 高亮显示某些DOM元素 ："></a><strong>CASE 1: 高亮显示某些DOM元素 </strong>：</h2></blockquote>
+<hr>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"highlight1"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span>I am trying my best to understand <span class="tag">&lt;<span class="name">span</span>&gt;</span>Jquery<span class="tag">&lt;/<span class="name">span</span>&gt;</span>now.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">p</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>jQuery<span class="tag">&lt;/<span class="name">span</span>&gt;</span> is a very popular <span class="tag">&lt;<span class="name">span</span>&gt;</span>JavaScript<span class="tag">&lt;/<span class="name">span</span>&gt;</span>library.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<h3 id="版本一："><a href="#版本一：" class="headerlink" title="版本一："></a><em>版本一</em>：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$.fn.highlight1 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">this</span>.css(<span class="string">'backgroundColor'</span>,<span class="string">'black'</span>).css(<span class="string">'color'</span>,<span class="string">'yellow'</span>);</div><div class="line"><span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;</div><div class="line">$(<span class="string">'#highlight1 span'</span>).highlight1();</div></pre></td></tr></table></figure>
+<p><em>效果</em>：</p>
+<p><div id="highlight1"><p>I am trying my best to understand <span>Jquery</span>now.</p><p><span>jQuery</span>is a very popular <span>JavaScript </span>library.</p></div></p>
+<script src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$.fn.highlight1 = function(){
+    this.css('backgroundColor','black').css('color','yellow');
+return this;
+}
+$('#highlight1 span').highlight1();    
+</script>
+
+<blockquote>
+<p><em>分析</em>：<br>此版本只规定了一种样式，复用性不高，可以传入参数，实现自定义样式。</p>
+</blockquote>
+<h3 id="版本二："><a href="#版本二：" class="headerlink" title="版本二："></a><em>版本二</em>：</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$.fn.highlight2 = <span class="function"><span class="keyword">function</span>(<span class="params">options</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> bgcolor = options &amp;&amp; options.backgroundColor || <span class="string">'grey'</span>;</div><div class="line">	<span class="keyword">var</span> color = options &amp;&amp; options.color || <span class="string">'pink'</span>;</div><div class="line">	<span class="keyword">this</span>.css(<span class="string">'backgroundColor'</span>,bgcolor).css(<span class="string">'color'</span>,color);</div><div class="line">&#125;</div><div class="line">$(<span class="string">'#highlight2 span'</span>).highlight2(&#123;<span class="attr">color</span>:<span class="string">'#000'</span>&#125;);</div></pre></td></tr></table></figure>
+<p><em>效果</em>：</p>
+<p><div id="highlight2"><p>I am trying my best to understand <span>Jquery</span>now.</p><p><span>jQuery</span>is a very popular <span>JavaScript </span>library.</p></div></p>
+<script src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+$.fn.highlight2 = function(options){
+    var bgcolor = options && options.backgroundColor || 'grey';
+    var color = options && options.color || 'pink';
+    this.css('backgroundColor',bgcolor).css('color',color);
+}
+$('#highlight2 span').highlight2({color:'#000'});        
+</script>
+
+<blockquote>
+<p><em>分析</em>：<br>每次调用都需要传入自定义的设置，能不能让我自己设定一个缺省值，以后的调用统一使用无参数的highlight2()？</p>
+</blockquote>
+<h3 id="优化版："><a href="#优化版：" class="headerlink" title="优化版："></a><em>优化版</em>：</h3><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"highlight"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>I am trying my best to understand <span class="tag">&lt;<span class="name">span</span>&gt;</span>Jquery<span class="tag">&lt;/<span class="name">span</span>&gt;</span>now.<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"sep"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">span</span>&gt;</span>jQuery<span class="tag">&lt;/<span class="name">span</span>&gt;</span>is a very popular <span class="tag">&lt;<span class="name">span</span>&gt;</span>JavaScript <span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">		library.</div><div class="line">	<span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">$.fn.highlight = <span class="function"><span class="keyword">function</span>(<span class="params">options</span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> opts = $.extend(&#123;&#125;,$.fn.highlight.defaults,options);</div><div class="line">	<span class="keyword">this</span>.css(<span class="string">'backgroundColor'</span>,opts.backgroundColor).css(<span class="string">'color'</span>,opts.color);</div><div class="line">	<span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">&#125;</div><div class="line">$.fn.highlight.defaults = &#123;</div><div class="line">	<span class="attr">color</span>:<span class="string">'green'</span>,</div><div class="line">	<span class="attr">backgroundColor</span>:<span class="string">'lightgrey'</span></div><div class="line">&#125;</div><div class="line">$(<span class="string">'#highlight span'</span>).highlight();</div></pre></td></tr></table></figure>
+<p><em>效果</em>：</p>
+<p><div id="highlight"><p>I am trying my best to understand <span>Jquery</span>now.</p><p class="sep"><span>jQuery</span>is a very popular <span>JavaScript </span>library.</p></div></p>
+<script src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+    $.fn.highlight = function(options){
+        var opts = $.extend({},$.fn.highlight.defaults,options);
+        this.css('backgroundColor',opts.backgroundColor).css('color',opts.color);
+        return this;
+    }
+    $.fn.highlight.defaults = {
+        color:'green',
+        backgroundColor:'lightgrey'
+    }
+    $('#highlight span').highlight();
+    $.fn.highlight.defaults.color = 'yellow';
+    $('#highlight .sep span').highlight();
+</script>
+
+<blockquote>
+<h2 id="CASE-2-给所有指向外链的超链接加上跳转提示-："><a href="#CASE-2-给所有指向外链的超链接加上跳转提示-：" class="headerlink" title="CASE 2: 给所有指向外链的超链接加上跳转提示 ："></a><strong>CASE 2: 给所有指向外链的超链接加上跳转提示 </strong>：</h2></blockquote>
+<hr>
+<p>借助filter()来实现针对特定元素的扩展。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"externalLink"</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>how to learn <span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://jquery.com"</span>&gt;</span>jQuery?<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">p</span>&gt;</span>any questions, you can search </div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.baidu.com"</span>&gt;</span>Baidu<span class="tag">&lt;/<span class="name">a</span>&gt;</span> or </div><div class="line">	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"http://www.google.com"</span>&gt;</span>Google<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">$.fn.external = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">return</span> <span class="keyword">this</span>.filter(<span class="string">'a'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">var</span> a = $(<span class="keyword">this</span>);</div><div class="line">		<span class="keyword">var</span> url = a.attr(<span class="string">'href'</span>);</div><div class="line">		<span class="keyword">if</span>(url &amp;&amp; url.indexOf(<span class="string">'http://'</span>)===<span class="number">0</span> || url.indexOf(<span class="string">'https://'</span>)===<span class="number">0</span>)&#123;</div><div class="line">		a.attr(<span class="string">'href'</span>,<span class="string">'#0'</span>)</div><div class="line">		 .removeAttr(<span class="string">'target'</span>)</div><div class="line">		 .click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		 	<span class="keyword">if</span>(confirm(<span class="string">'want to visit '</span>+url+<span class="string">'?'</span>))&#123;</div><div class="line">		 		<span class="built_in">window</span>.open(url);</div><div class="line">		 	&#125;</div><div class="line">		 &#125;)</div><div class="line">		&#125;</div><div class="line">	&#125;)</div><div class="line">&#125;</div><div class="line">$(<span class="string">'.externalLink a'</span>).external();</div></pre></td></tr></table></figure>
+<p><em>效果</em>：</p>
+<p><div class="externalLink"><p>how to learn <a href="http://jquery.com/" target="_blank">jQuery?</a></p><p>any questions, you can search <a href="http://www.baidu.com" target="_blank">Baidu</a> or <a href="http://www.google.com" target="_blank">Google</a></p><br></div></p>
+<script>
+        $.fn.external = function(){
+            return this.filter('a').each(function(){
+                var a = $(this);
+                var url = a.attr('href');
+                if(url && (url.indexOf('http://')===0 || url.indexOf('https://')===0)){
+                a.attr('href','#0')
+                 .removeAttr('target')
+                 .click(function(){
+                     if(confirm('want to visit '+url+'?')){
+                         window.open(url);
+                     }
+                 })
+                }
+            })
+        }
+    $('.externalLink a').external();
+</script>
+
+
+<blockquote>
+<h2 id="CONCLUSION-编写一个jQuery插件的原则："><a href="#CONCLUSION-编写一个jQuery插件的原则：" class="headerlink" title="CONCLUSION: 编写一个jQuery插件的原则："></a><strong>CONCLUSION: 编写一个jQuery插件的原则</strong>：</h2></blockquote>
+<hr>
+<p>1.给$.fn绑定函数，实现插件的代码逻辑；<br>2.插件函数最后要return this;以支持链式调用；<br>3.插件函数要有默认值，绑定在<code>$.fn.pluginName.defaults</code>上;<br>4.用户在调用时可传入设定值以便覆盖默认值。</p>
+<hr>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jquery/" rel="tag">#jquery</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/28/differencesbetweenattrandprop/" rel="next">attr 和 prop之间的差异</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff;
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        // background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        == This is just a function ==
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://oetmw6l8o.bkt.clouddn.com/pay-ali.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://oetmw6l8o.bkt.clouddn.com/pay-ali.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://oetmw6l8o.bkt.clouddn.com/pay-wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://oetmw6l8o.bkt.clouddn.com/pay-wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://oetmw6l8o.bkt.clouddn.com/pay-ali.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://oetmw6l8o.bkt.clouddn.com/pay-ali.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://oetmw6l8o.bkt.clouddn.com/pay-wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://oetmw6l8o.bkt.clouddn.com/pay-wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/10/29/jqueryextensions/"
+                   data-title="编写jQuery插件" data-url="http://yoursite.com/2016/10/29/jqueryextensions/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/tx.jpg" alt="Vicky" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Vicky</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Lift is short, live it, love it, enjoy it.</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/VickyXZhang" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zcool.com.cn/u/13602384" target="_blank">Zcool</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#CASE-1-高亮显示某些DOM元素-："><span class="nav-number">1.</span> <span class="nav-text">CASE 1: 高亮显示某些DOM元素 ：</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#版本一："><span class="nav-number">1.1.</span> <span class="nav-text">版本一：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#版本二："><span class="nav-number">1.2.</span> <span class="nav-text">版本二：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#优化版："><span class="nav-number">1.3.</span> <span class="nav-text">优化版：</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CASE-2-给所有指向外链的超链接加上跳转提示-："><span class="nav-number">2.</span> <span class="nav-text">CASE 2: 给所有指向外链的超链接加上跳转提示 ：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CONCLUSION-编写一个jQuery插件的原则："><span class="nav-number">3.</span> <span class="nav-text">CONCLUSION: 编写一个jQuery插件的原则：</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vicky
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"vickyxzhang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,871 @@
+<!doctype html>
+<html class="theme-next use-motion theme-next-mala">
+<head>
+  
+
+<meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+  <link rel="stylesheet" type="text/css" href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5"/>
+
+
+
+
+<link rel="stylesheet" type="text/css" href="/css/main.css?v=0.4.5.1"/>
+
+
+    <meta name="description" content="Lift is short, live it, love it, enjoy it." />
+
+
+
+  <meta name="keywords" content="jquery," />
+
+
+
+
+
+  <link rel="shorticon icon" type="image/x-icon" href="/images/bitbug_favicon.ico?v=0.4.5.1" />
+
+
+<meta name="description" content=".attr()
+  Get the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="attr 和 prop之间的差异">
+<meta property="og:url" content="http://yoursite.com/2016/10/28/differencesbetweenattrandprop/index.html">
+<meta property="og:site_name" content="Vicky's Blog">
+<meta property="og:description" content=".attr()
+  Get the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.">
+<meta property="og:updated_time" content="2016-10-28T11:32:06.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="attr 和 prop之间的差异">
+<meta name="twitter:description" content=".attr()
+  Get the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.">
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var CONFIG = {
+    scheme: 'Mala',
+    sidebar: 'post'
+  };
+</script>
+
+  <title> attr 和 prop之间的差异 | Vicky's Blog </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  <!--[if lte IE 8]>
+  <div style=' clear: both; height: 59px; padding:0 0 0 15px; position: relative;margin:0 auto;'>
+    <a href="http://windows.microsoft.com/en-US/internet-explorer/products/ie/home?ocid=ie6_countdown_bannercode">
+      <img src="http://7u2nvr.com1.z0.glb.clouddn.com/picouterie.jpg" border="0" height="42" width="820"
+           alt="You are using an outdated browser. For a faster, safer browsing experience, upgrade for free today or use other browser ,like chrome firefox safari."
+           style='margin-left:auto;margin-right:auto;display: block;'/>
+    </a>
+  </div>
+<![endif]-->
+  
+
+
+
+  <div class="container one-column page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><h1 class="site-meta">
+  <span class="logo-line-before"><i></i></span>
+  <a href="/" class="brand" rel="start">
+      <span class="logo">
+        <i class="icon-next-logo"></i>
+      </span>
+      <span class="site-title">Welcome to my land.</span>
+  </a>
+  <span class="logo-line-after"><i></i></span>
+</h1>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu ">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            <i class="menu-item-icon icon-next-home"></i> <br />
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            <i class="menu-item-icon icon-next-categories"></i> <br />
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            <i class="menu-item-icon icon-next-archives"></i> <br />
+            Archives
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            <i class="menu-item-icon icon-next-tags"></i> <br />
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            <i class="menu-item-icon icon-next-about"></i> <br />
+            About
+          </a>
+        </li>
+      
+
+      
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div id="content" class="content"> 
+
+  <div id="posts" class="posts-expand">
+    
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <header class="post-header">
+
+      
+      
+        <h1 class="post-title" itemprop="name headline">
+          
+          
+            
+              attr 和 prop之间的差异
+            
+          
+        </h1>
+      
+
+      <div class="post-meta">
+        <span class="post-time">
+          Posted on
+          <time itemprop="dateCreated" datetime="2016-10-28T16:07:33+08:00" content="2016-10-28">
+            2016-10-28
+          </time>
+        </span>
+
+        
+          <span class="post-category" >
+            &nbsp; | &nbsp; In
+            
+              <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                <a href="/categories/技术类/" itemprop="url" rel="index">
+                  <span itemprop="name">技术类</span>
+                </a>
+              </span>
+
+              
+              
+
+            
+          </span>
+        
+
+        
+          
+            <span class="post-comments-count">
+              &nbsp; | &nbsp;
+              <!--
+              <a href="/2016/10/28/differencesbetweenattrandprop/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/28/differencesbetweenattrandprop/" itemprop="commentsCount"></span>
+              </a>
+              -->
+              <a href="/2016/10/28/differencesbetweenattrandprop/#comments" itemprop="discussionUrl">
+                <span>评论</span>
+              </a>
+            </span>
+          
+        
+      </div>
+    </header>
+
+    <div class="post-body">
+
+      
+      
+
+      
+        <span itemprop="articleBody"><h3 id="attr"><a href="#attr" class="headerlink" title=".attr()"></a>.attr()</h3><blockquote>
+<p>  Get the value of an attribute for the first element in the set of matched elements or set one or more attributes for every matched element.</p>
+</blockquote>
+<a id="more"></a>
+<p>  As of jQuery 1.6, the .attr() method returns <strong>undefined</strong> for attributes that have not been set. To retrieve and change DOM properties such as the <strong>checked</strong>, <strong>selected</strong>, or <strong>disabled</strong> state of <strong>form elements</strong>, <em><strong>use the .prop() method</strong></em>.</p>
+<h3 id="Attributes-vs-Properties"><a href="#Attributes-vs-Properties" class="headerlink" title="Attributes vs. Properties"></a>Attributes vs. Properties</h3><p>The difference between attributes and properties can be important in specific situations. Before jQuery 1.6, the .attr() method sometimes took property values into account when retrieving some attributes, which could cause inconsistent behavior. As of jQuery 1.6, the .prop() method provides a way to explicitly retrieve property values, while .attr() retrieves attributes.<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"chk1"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> /&gt;</span>是否可见</div><div class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"chk2"</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">checked</span>=<span class="string">"checked"</span> /&gt;</span>是否可见</div></pre></td></tr></table></figure></p>
+<p>使用prop方法:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#chk1"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">false</span></div><div class="line">$(<span class="string">"#chk2"</span>).prop(<span class="string">"checked"</span>) == <span class="literal">true</span></div></pre></td></tr></table></figure></p>
+<p>如果上面使用attr方法，则会出现：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$(<span class="string">"#chk1"</span>).attr(<span class="string">"checked"</span>) == <span class="literal">undefined</span></div><div class="line">$(<span class="string">"#chk2"</span>).attr(<span class="string">"checked"</span>) == <span class="string">"checked"</span></div></pre></td></tr></table></figure></p>
+<h3 id="CONCLUSION"><a href="#CONCLUSION" class="headerlink" title="CONCLUSION:"></a>CONCLUSION:</h3><blockquote>
+<p>.prop()方法应该被用来处理boolean attributes/properties以及在html(比如：window.location)中不存在的properties。其他所有的attributes(在html中你看到的那些)可以而且应该继续使用.attr()方法来进行操作。</p>
+<p>.attr()和.prop()都不应该被用来取值/设值。使用.val()方法代替(即使使用.attr(“value”,”somevalue”) 可以继续运行，就像1.6之前做的那样)</p>
+</blockquote>
+<h3 id="应用：prop全选全不选反选"><a href="#应用：prop全选全不选反选" class="headerlink" title="应用：prop全选全不选反选:"></a>应用：prop全选全不选反选:</h3><form id="test-form" action="test"><legend>请选择想要学习的编程语言：</legend><fieldset><label class="selectAll"><input type="checkbox"><span class="selectAll">全选</span><span class="deselectAll">全不选</span></label>  <a href="javascript:;" class="invertSelect" target="_blank" rel="external">反选</a><br>          <label><input type="checkbox" name="lang" value="javascript"> JavaScript</label><br>          <label><input type="checkbox" name="lang" value="python"> Python</label><br>          <label><input type="checkbox" name="lang" value="ruby"> Ruby</label><br>          <label><input type="checkbox" name="lang" value="haskell"> Haskell</label><br>          <label><input type="checkbox" name="lang" value="scheme"> Scheme</label><br>          <button type="submit">Submit</button><br>      </fieldset><br></form>
+
+<script src="https://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"></script>
+<script>
+var
+    form = $('#test-form'),
+    langs = form.find('[name=lang]'),
+    selectAll = form.find('label.selectAll :checkbox'),
+    selectAllLabel = form.find('label.selectAll span.selectAll'),
+    deselectAllLabel = form.find('label.selectAll span.deselectAll'),
+    invertSelect = form.find('a.invertSelect');
+
+// 重置初始化状态:
+form.find('*').show().off();
+form.find(':checkbox').prop('checked', false).off();
+deselectAllLabel.hide();
+// 拦截form提交事件:
+form.off().submit(function (e) {
+    e.preventDefault();
+    alert(form.serialize());
+});
+/*全选*/
+selectAllLabel.click(function(){
+    langs.prop('checked',true);
+    deselectAllLabel.show();
+    $(this).hide();
+})
+/*全不选*/
+deselectAllLabel.click(function(){
+    langs.prop('checked',false);
+    selectAllLabel.show();
+    $(this).hide();
+})
+/*反选*/
+invertSelect.click(function(){
+    langs.each(function(i,o){
+            $(this).prop("checked", !$(this).prop("checked"));   
+        })
+    checknum();
+})
+langs.click(function(){
+    checknum();
+})
+/*判断全选是否勾选*/
+function checknum(){
+    var cknum = langs.size();
+    var ck = 0;
+    langs.each(function(){
+        if($(this).prop('checked') == true){
+            ck++;
+        }
+    })
+    if(ck == cknum){
+        selectAll.prop('checked',true);
+    }else{
+        selectAll.prop('checked',false);
+    }
+}
+</script>
+
+<p>代码：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">        <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	   <span class="comment">&lt;!-- HTML结构 --&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">form</span> <span class="attr">id</span>=<span class="string">"test-form"</span> <span class="attr">action</span>=<span class="string">"test"</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">legend</span>&gt;</span>请选择想要学习的编程语言：<span class="tag">&lt;/<span class="name">legend</span>&gt;</span></div><div class="line">		<span class="tag">&lt;<span class="name">fieldset</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">label</span> <span class="attr">class</span>=<span class="string">"selectAll"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"selectAll"</span>&gt;</span>全选<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">span</span> <span class="attr">class</span>=<span class="string">"deselectAll"</span>&gt;</span>全不选<span class="tag">&lt;/<span class="name">span</span>&gt;</span></div><div class="line">			 <span class="tag">&lt;/<span class="name">label</span>&gt;</span>  </div><div class="line">			 	<span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"javascript:;"</span> <span class="attr">class</span>=<span class="string">"invertSelect"</span>&gt;</span>反选<span class="tag">&lt;/<span class="name">a</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"lang"</span> <span class="attr">value</span>=<span class="string">"javascript"</span>&gt;</span></div><div class="line">				JavaScript</div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"lang"</span> <span class="attr">value</span>=<span class="string">"python"</span>&gt;</span> </div><div class="line">				Python</div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"lang"</span> <span class="attr">value</span>=<span class="string">"ruby"</span>&gt;</span> </div><div class="line">				Ruby</div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"lang"</span> <span class="attr">value</span>=<span class="string">"haskell"</span>&gt;</span> </div><div class="line">				Haskell</div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">label</span>&gt;</span></div><div class="line">				<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">name</span>=<span class="string">"lang"</span> <span class="attr">value</span>=<span class="string">"scheme"</span>&gt;</span> </div><div class="line">				Scheme</div><div class="line">			<span class="tag">&lt;/<span class="name">label</span>&gt;</span></div><div class="line">			<span class="tag">&lt;<span class="name">button</span> <span class="attr">type</span>=<span class="string">"submit"</span>&gt;</span>Submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line">		<span class="tag">&lt;/<span class="name">fieldset</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">form</span>&gt;</span></div><div class="line">	<span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div></pre></td><td class="code"><pre><div class="line">&lt;script&gt;</div><div class="line"><span class="keyword">var</span></div><div class="line">    form = $(<span class="string">'#test-form'</span>),</div><div class="line">    langs = form.find(<span class="string">'[name=lang]'</span>),</div><div class="line">    selectAll = form.find(<span class="string">'label.selectAll :checkbox'</span>),</div><div class="line">    selectAllLabel = form.find(<span class="string">'label.selectAll span.selectAll'</span>),</div><div class="line">    deselectAllLabel = form.find(<span class="string">'label.selectAll span.deselectAll'</span>),</div><div class="line">    invertSelect = form.find(<span class="string">'a.invertSelect'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 重置初始化状态:</span></div><div class="line">form.find(<span class="string">'*'</span>).show().off();</div><div class="line">form.find(<span class="string">':checkbox'</span>).prop(<span class="string">'checked'</span>, <span class="literal">false</span>).off();</div><div class="line">deselectAllLabel.hide();</div><div class="line"><span class="comment">// 拦截form提交事件:</span></div><div class="line">form.off().submit(<span class="function"><span class="keyword">function</span> (<span class="params">e</span>) </span>&#123;</div><div class="line">    e.preventDefault();</div><div class="line">    alert(form.serialize());</div><div class="line">&#125;);</div><div class="line"><span class="comment">/*全选*/</span></div><div class="line">selectAllLabel.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	langs.prop(<span class="string">'checked'</span>,<span class="literal">true</span>);</div><div class="line">	deselectAllLabel.show();</div><div class="line">	$(<span class="keyword">this</span>).hide();</div><div class="line">&#125;)</div><div class="line"><span class="comment">/*全不选*/</span></div><div class="line">deselectAllLabel.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	langs.prop(<span class="string">'checked'</span>,<span class="literal">false</span>);</div><div class="line">	selectAllLabel.show();</div><div class="line">	$(<span class="keyword">this</span>).hide();</div><div class="line">&#125;)</div><div class="line"><span class="comment">/*反选*/</span></div><div class="line">invertSelect.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	langs.each(<span class="function"><span class="keyword">function</span>(<span class="params">i,o</span>)</span>&#123;</div><div class="line">			$(<span class="keyword">this</span>).prop(<span class="string">"checked"</span>, !$(<span class="keyword">this</span>).prop(<span class="string">"checked"</span>));   </div><div class="line">		&#125;)</div><div class="line">	checknum();</div><div class="line">&#125;)</div><div class="line">langs.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	checknum();</div><div class="line">&#125;)</div><div class="line"><span class="comment">/*判断全选是否勾选*/</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">checknum</span>(<span class="params"></span>)</span>&#123;</div><div class="line">	<span class="keyword">var</span> cknum = langs.size();</div><div class="line">	<span class="keyword">var</span> ck = <span class="number">0</span>;</div><div class="line">	langs.each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line">		<span class="keyword">if</span>($(<span class="keyword">this</span>).prop(<span class="string">'checked'</span>) == <span class="literal">true</span>)&#123;</div><div class="line">			ck++;</div><div class="line">		&#125;</div><div class="line">	&#125;)</div><div class="line">	<span class="keyword">if</span>(ck == cknum)&#123;</div><div class="line">		selectAll.prop(<span class="string">'checked'</span>,<span class="literal">true</span>);</div><div class="line">	&#125;<span class="keyword">else</span>&#123;</div><div class="line">		selectAll.prop(<span class="string">'checked'</span>,<span class="literal">false</span>);</div><div class="line">	&#125;</div><div class="line">&#125;</div><div class="line">&lt;<span class="regexp">/script&gt;</span></div></pre></td></tr></table></figure>
+</span>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/jquery/" rel="tag">#jquery</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/29/jqueryextensions/" rel="prev">编写jQuery插件</a>
+            
+          </div>
+
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/28/fixplaceholderinie/" rel="next">解决placeholder兼容性问题</a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div>
+      
+        <style type="text/css">
+
+    .donate_bar {
+        text-align: center;
+        margin-top : 5%;
+    }
+
+    .donate_bar.hidden {
+        display:none;
+    }
+/*
+    .donate_bar a.btn_donate {
+        display: inline-block;
+        width: 82px;
+        height: 82px;
+        margin-left:auto;
+        margin-right:auto;
+
+        background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat;
+        _background: url("http://img.t.sinajs.cn/t5/style/images/apps_PRF/e_media/btn_reward.gif") no-repeat; 
+
+        -webkit-transition: background 0s;
+        -moz-transition: background 0s;
+        -o-transition: background 0s;
+        -ms-transition: background 0s;
+        transition: background 0s;
+    }
+*/
+    .donate_bar a.btn_donate:hover { 
+        // background-position: 0px -82px;
+        color: #87daff;
+    }
+
+    .donate_bar .donate_txt {
+        display: block;
+        color: #9d9d9d;
+        font: 14px/2 "Microsoft Yahei";
+    }
+
+    .bold { 
+        font-weight: bold; 
+    }
+
+    .post-donate a {
+        border-bottom: 0px;
+    }
+
+    #donate_guide table {
+        border: none;
+    }
+
+    #donate_guide td {
+        border-bottom: none;
+        border-right: none;
+        // background: #333333;
+        valign: top;
+    }
+
+</style>
+
+
+
+    
+
+    <div class ="post-donate">
+        <div id="donate_board" class="donate_bar center">
+              <a id="btn_donate" class="btn_donate" href="javascript:;" title="打赏">赏</a>
+              <span id="donate_txt" class="donate_txt">
+                   
+                        == This is just a function ==
+                   
+              </span>
+            <br>
+        </div>  
+  
+        <div id="donate_guide" class="donate_bar center hidden">
+            <!--
+            
+                <a href="http://oetmw6l8o.bkt.clouddn.com/pay-ali.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                    style="float:left;margin-left:25%;margin-right:10px;">
+                    <img src="http://oetmw6l8o.bkt.clouddn.com/pay-ali.jpg" title="" height="164px" width="164px">
+                </a> 
+              
+
+            
+                <a href="http://oetmw6l8o.bkt.clouddn.com/pay-wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                    style="margin-right:30%">
+                    <img src="http://oetmw6l8o.bkt.clouddn.com/pay-wechat.jpg" title="" height="164px" width="164px">
+                </a>
+            
+            -->
+            <table>
+                <tr>
+                    <td>
+                        
+                            <a href="http://oetmw6l8o.bkt.clouddn.com/pay-ali.jpg" title="支付宝打赏" class="fancybox" rel="article0" 
+                                style="float:left;margin-left:25%;margin-right:10px;">
+                                <img src="http://oetmw6l8o.bkt.clouddn.com/pay-ali.jpg" title="" height="164px" width="164px">
+                            </a> 
+                         
+                    </td>
+                    <td>
+                        
+                            <a href="http://oetmw6l8o.bkt.clouddn.com/pay-wechat.jpg" title="微信打赏" class="fancybox" rel="article0"
+                                style="margin-right:30%">
+                                <img src="http://oetmw6l8o.bkt.clouddn.com/pay-wechat.jpg" title="" height="164px" width="164px">
+                            </a>
+                        
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <script type="text/javascript">
+            document.getElementById('btn_donate').onclick = function() {
+                $('#donate_board').addClass('hidden');
+                // $('#donate_guide').removeClass('hidden');
+                $('#donate_guide').show(2000);
+            }
+
+        </script>
+    </div>
+
+    
+
+
+      
+    </div>
+
+    <div class="post-spread">
+      
+        <div class="bdsharebuttonbox">
+	<a href="#" class="bds_more" data-cmd="more"></a>
+	<a href="#" class="bds_weixin" data-cmd="weixin" title="分享到微信"></a>
+	<a href="#" class="bds_tsina" data-cmd="tsina" title="分享到新浪微博"></a>
+	<a href="#" class="bds_sqq" data-cmd="sqq" title="分享到QQ好友"></a>
+	<a href="#" class="bds_qzone" data-cmd="qzone" title="分享到QQ空间"></a>
+	<a href="#" class="bds_tqq" data-cmd="tqq" title="分享到腾讯微博"></a>
+	<a href="#" class="bds_douban" data-cmd="douban" title="分享到豆瓣网"></a>
+</div>
+<script>window._bd_share_config={"common":{"bdSnsKey":{},"bdText":"","bdMini":"2","bdMiniList":false,"bdPic":"","bdStyle":"1","bdSize":"16"},"share":{}};with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?v=89860593.js?cdnversion='+~(-new Date()/36e5)];</script>
+
+      
+    </div>
+  </div>
+
+ </div>
+
+        
+
+        
+          <div class="comments" id="comments">
+            
+              <div class="ds-thread" data-thread-key="2016/10/28/differencesbetweenattrandprop/"
+                   data-title="attr 和 prop之间的差异" data-url="http://yoursite.com/2016/10/28/differencesbetweenattrandprop/">
+              </div>
+            
+          </div>
+        
+      </div>
+
+      
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Table Of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" src="/images/tx.jpg" alt="Vicky" itemprop="image"/>
+          <p class="site-author-name" itemprop="name">Vicky</p>
+        </div>
+        <p class="site-description motion-element" itemprop="description">Lift is short, live it, love it, enjoy it.</p>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">7</span>
+              <span class="site-state-item-name">posts</span>
+            </a>
+          </div>
+
+          <div class="site-state-item site-state-categories">
+            <a href="/categories">
+              <span class="site-state-item-count">3</span>
+              <span class="site-state-item-name">categories</span>
+              </a>
+          </div>
+
+          <div class="site-state-item site-state-tags">
+            <a href="/tags">
+              <span class="site-state-item-count">6</span>
+              <span class="site-state-item-name">tags</span>
+              </a>
+          </div>
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/VickyXZhang" target="_blank">GitHub</a>
+              </span>
+            
+              <span class="links-of-author-item">
+                <a href="http://www.zcool.com.cn/u/13602384" target="_blank">Zcool</a>
+              </span>
+            
+          
+        </div>
+
+        <div class="links-of-friendly motion-element">
+          
+        </div>
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap sidebar-panel-active">
+          <div class="post-toc-indicator-top post-toc-indicator"></div>
+          <div class="post-toc">
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#attr"><span class="nav-number">1.</span> <span class="nav-text">.attr()</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Attributes-vs-Properties"><span class="nav-number">2.</span> <span class="nav-text">Attributes vs. Properties</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#CONCLUSION"><span class="nav-number">3.</span> <span class="nav-text">CONCLUSION:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#应用：prop全选全不选反选"><span class="nav-number">4.</span> <span class="nav-text">应用：prop全选全不选反选:</span></a></li></ol></div>
+            
+          </div>
+          <div class="post-toc-indicator-bottom post-toc-indicator"></div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner"> <div class="copyright" >
+  
+  &copy; &nbsp; 
+  <span itemprop="copyrightYear">2016
+  </span>
+  <span class="with-love">
+    <i class="icon-next-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Vicky
+  </span>
+</div>
+
+<div class="powered-by">
+  Powered by <a class="theme-link" href="http://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme by <a class="theme-link" href="http://blog.idhyt.com">idhyt</a>.<a class="theme-link" href="https://github.com/idhyt/hexo-theme-next/tree/magiclamp">Mala</a>
+</div>
+
+<!-- busuanzi -->
+
+
+
+ </div>
+    </footer>
+
+    <div class="back-to-top"></div>
+  </div>
+
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  
+  
+    
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"vickyxzhang"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+    
+
+    
+  
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js"></script>
+  <script type="text/javascript" src="/js/fancy-box.js?v=0.4.5.1"></script>
+
+
+  <script type="text/javascript" src="/js/helpers.js?v=0.4.5.1"></script>
+  
+
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js"></script>
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js"></script>
+
+  <script type="text/javascript" src="/js/motion_global.js?v=0.4.5.1" id="motion.global"></script>
+
+
+
+
+  <script type="text/javascript" src="/js/nav-toggle.js?v=0.4.5.1"></script>
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  
+<script type="text/javascript" src="/js/bootstrap.scrollspy.js?v=0.4.5.1" id="bootstrap.scrollspy.custom"></script>
+
+
+<script type="text/javascript" id="sidebar.toc.highlight">
+  $(document).ready(function () {
+    var tocSelector = '.post-toc';
+    var $tocSelector = $(tocSelector);
+    var activeCurrentSelector = '.active-current';
+
+    $tocSelector
+      .on('activate.bs.scrollspy', function () {
+        var $currentActiveElement = $(tocSelector + ' .active').last();
+
+        removeCurrentActiveClass();
+        $currentActiveElement.addClass('active-current');
+
+        $tocSelector[0].scrollTop = $currentActiveElement.position().top;
+      })
+      .on('clear.bs.scrollspy', function () {
+        removeCurrentActiveClass();
+      });
+
+    function removeCurrentActiveClass () {
+      $(tocSelector + ' ' + activeCurrentSelector)
+        .removeClass(activeCurrentSelector.substring(1));
+    }
+
+    function processTOC () {
+      getTOCMaxHeight();
+      toggleTOCOverflowIndicators();
+    }
+
+    function getTOCMaxHeight () {
+      var height = $('.sidebar').height() -
+                   $tocSelector.position().top -
+                   $('.post-toc-indicator-bottom').height();
+
+      $tocSelector.css('height', height);
+
+      return height;
+    }
+
+    function toggleTOCOverflowIndicators () {
+      tocOverflowIndicator(
+        '.post-toc-indicator-top',
+        $tocSelector.scrollTop() > 0 ? 'show' : 'hide'
+      );
+
+      tocOverflowIndicator(
+        '.post-toc-indicator-bottom',
+        $tocSelector.scrollTop() >= $tocSelector.find('ol').height() - $tocSelector.height() ? 'hide' : 'show'
+      )
+    }
+
+    $(document).on('sidebar.motion.complete', function () {
+      processTOC();
+    });
+
+    $('body').scrollspy({ target: tocSelector });
+    $(window).on('resize', function () {
+      if ( $('.sidebar').hasClass('sidebar-active') ) {
+        processTOC();
+      }
+    });
+
+    onScroll($tocSelector);
+
+    function onScroll (element) {
+      element.on('mousewheel DOMMouseScroll', function (event) {
+          var oe = event.originalEvent;
+          var delta = oe.wheelDelta || -oe.detail;
+
+          this.scrollTop += ( delta < 0 ? 1 : -1 ) * 30;
+          event.preventDefault();
+
+          toggleTOCOverflowIndicators();
+      });
+    }
+
+    function tocOverflowIndicator (indicator, action) {
+      var $indicator = $(indicator);
+      var opacity = action === 'show' ? 0.4 : 0;
+      $indicator.velocity ?
+        $indicator.velocity('stop').velocity({
+          opacity: opacity
+        }, { duration: 100 }) :
+        $indicator.stop().animate({
+          opacity: opacity
+        }, 100);
+    }
+
+  });
+</script>
+
+<script type="text/javascript" id="sidebar.nav">
+  $(document).ready(function () {
+    var html = $('html');
+    var TAB_ANIMATE_DURATION = 200;
+    var hasVelocity = $.isFunction(html.velocity);
+
+    $('.sidebar-nav li').on('click', function () {
+      var item = $(this);
+      var activeTabClassName = 'sidebar-nav-active';
+      var activePanelClassName = 'sidebar-panel-active';
+      if (item.hasClass(activeTabClassName)) {
+        return;
+      }
+
+      var currentTarget = $('.' + activePanelClassName);
+      var target = $('.' + item.data('target'));
+
+      hasVelocity ?
+        currentTarget.velocity('transition.slideUpOut', TAB_ANIMATE_DURATION, function () {
+          target
+            .velocity('stop')
+            .velocity('transition.slideDownIn', TAB_ANIMATE_DURATION)
+            .addClass(activePanelClassName);
+        }) :
+        currentTarget.animate({ opacity: 0 }, TAB_ANIMATE_DURATION, function () {
+          currentTarget.hide();
+          target
+            .stop()
+            .css({'opacity': 0, 'display': 'block'})
+            .animate({ opacity: 1 }, TAB_ANIMATE_DURATION, function () {
+              currentTarget.removeClass(activePanelClassName);
+              target.addClass(activePanelClassName);
+            });
+        });
+
+      item.siblings().removeClass(activeTabClassName);
+      item.addClass(activeTabClassName);
+    });
+
+    $('.post-toc a').on('click', function (e) {
+      e.preventDefault();
+      var targetSelector = escapeSelector(this.getAttribute('href'));
+      var offset = $(targetSelector).offset().top;
+      hasVelocity ?
+        html.velocity('stop').velocity('scroll', {
+          offset: offset  + 'px',
+          mobileHA: false
+        }) :
+        $('html, body').stop().animate({
+          scrollTop: offset
+        }, 500);
+    });
+
+    // Expand sidebar on post detail page by default, when post has a toc.
+    var $tocContent = $('.post-toc-content');
+    if (isDesktop() && CONFIG.sidebar === 'post') {
+      if ($tocContent.length > 0 && $tocContent.html().trim().length > 0) {
+        displaySidebar();
+      }
+    }
+  });
+</script>
+
+
+
+  <script type="text/javascript">
+    $(document).ready(function () {
+      if (CONFIG.sidebar === 'always') {
+        displaySidebar();
+      }
+      if (isMobile()) {
+        FastClick.attach(document.body);
+      }
+    });
+  </script>
+
+  
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/lazyload.js"></script>
+  <script type="text/javascript">
+    $(function () {
+      $("#posts").find('img').lazyload({
+        placeholder: "/images/loading.gif",
+        effect: "fadeIn"
+      });
+    });
+  </script>
+</body>
+</html>
