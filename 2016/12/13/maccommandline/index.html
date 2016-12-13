@@ -28,7 +28,7 @@
 
 
 
-  <meta name="keywords" content="incompatibility," />
+  <meta name="keywords" content="tools," />
 
 
 
@@ -37,16 +37,16 @@
   <link rel="shorticon icon" type="image/x-icon" href="/images/bitbug_favicon.ico?v=0.4.5.1" />
 
 
-<meta name="description" content="问题描述：placeholder是HTML5&amp;lt;input&amp;gt;的属性之一，非现代浏览器( 例如 IE6-IE9 )是不支持placeholder属性的。">
+<meta name="description" content="许多功能在图形界面不提供，只有通过命令行来实现。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="解决placeholder兼容性问题">
-<meta property="og:url" content="http://yoursite.com/2016/10/28/fixplaceholderinie/index.html">
+<meta property="og:title" content="Mac 命令大全">
+<meta property="og:url" content="http://yoursite.com/2016/12/13/maccommandline/index.html">
 <meta property="og:site_name" content="Vicky's Blog">
-<meta property="og:description" content="问题描述：placeholder是HTML5&amp;lt;input&amp;gt;的属性之一，非现代浏览器( 例如 IE6-IE9 )是不支持placeholder属性的。">
-<meta property="og:updated_time" content="2016-10-28T11:22:02.000Z">
+<meta property="og:description" content="许多功能在图形界面不提供，只有通过命令行来实现。">
+<meta property="og:updated_time" content="2016-12-13T15:29:21.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="解决placeholder兼容性问题">
-<meta name="twitter:description" content="问题描述：placeholder是HTML5&amp;lt;input&amp;gt;的属性之一，非现代浏览器( 例如 IE6-IE9 )是不支持placeholder属性的。">
+<meta name="twitter:title" content="Mac 命令大全">
+<meta name="twitter:description" content="许多功能在图形界面不提供，只有通过命令行来实现。">
 
 
 <script type="text/javascript" id="hexo.configuration">
@@ -56,7 +56,7 @@
   };
 </script>
 
-  <title> 解决placeholder兼容性问题 | Vicky's Blog </title>
+  <title> Mac 命令大全 | Vicky's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="en">
@@ -173,7 +173,7 @@
           
           
             
-              解决placeholder兼容性问题
+              Mac 命令大全
             
           
         </h1>
@@ -182,8 +182,8 @@
       <div class="post-meta">
         <span class="post-time">
           Posted on
-          <time itemprop="dateCreated" datetime="2016-10-28T11:39:05+08:00" content="2016-10-28">
-            2016-10-28
+          <time itemprop="dateCreated" datetime="2016-12-13T11:39:05+08:00" content="2016-12-13">
+            2016-12-13
           </time>
         </span>
 
@@ -209,11 +209,11 @@
             <span class="post-comments-count">
               &nbsp; | &nbsp;
               <!--
-              <a href="/2016/10/28/fixplaceholderinie/#comments" itemprop="discussionUrl">
-                <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/28/fixplaceholderinie/" itemprop="commentsCount"></span>
+              <a href="/2016/12/13/maccommandline/#comments" itemprop="discussionUrl">
+                <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/13/maccommandline/" itemprop="commentsCount"></span>
               </a>
               -->
-              <a href="/2016/10/28/fixplaceholderinie/#comments" itemprop="discussionUrl">
+              <a href="/2016/12/13/maccommandline/#comments" itemprop="discussionUrl">
                 <span>评论</span>
               </a>
             </span>
@@ -228,46 +228,69 @@
       
 
       
-        <span itemprop="articleBody"><p><strong>问题描述</strong>：placeholder是HTML5<code>&lt;input&gt;</code>的属性之一，非现代浏览器( 例如 IE6-IE9 )是不支持placeholder属性的。</p>
+        <span itemprop="articleBody"><p>许多功能在图形界面不提供，只有通过命令行来实现。</p>
 <a id="more"></a>
 <hr>
-<p>解决方法：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"http://apps.bdimg.com/libs/jquery/1.9.1/jquery.min.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">placeholder</span>=<span class="string">"请输入您的姓名"</span>&gt;</span></div><div class="line">	//密码类型需要模拟一个输入框</div><div class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">id</span>=<span class="string">"pwd"</span> <span class="attr">placeholder</span>=<span class="string">"请输入密码"</span>/&gt;</span> </div><div class="line">	<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"password"</span> <span class="attr">id</span>=<span class="string">"password"</span> <span class="attr">style</span>=<span class="string">"display:none;"</span>/&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<pre><code class="javascript">&lt;script type=<span class="string">"text/javascript"</span>&gt; 
-    $(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{
-        <span class="keyword">if</span>(!placeholderSupport()){   <span class="comment">// 判断浏览器是否支持 placeholder</span>
-            $(<span class="string">'[placeholder]'</span>).focus(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-                <span class="keyword">var</span> input = $(<span class="keyword">this</span>);
-                <span class="keyword">if</span> (input.val() == input.attr(<span class="string">'placeholder'</span>)) {
-                    input.val(<span class="string">''</span>);
-                    input.removeClass(<span class="string">'placeholder'</span>);
-                }
-            }).blur(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>{
-                <span class="keyword">var</span> input = $(<span class="keyword">this</span>);
-                <span class="keyword">if</span> (input.val() == <span class="string">''</span> || input.val() == input.attr(<span class="string">'placeholder'</span>)) {
-                    input.addClass(<span class="string">'placeholder'</span>);
-                    input.val(input.attr(<span class="string">'placeholder'</span>));
-                }
-            }).blur();
-        };
-        <span class="comment">//密码类型</span>
-        <span class="keyword">var</span> pwd = $(<span class="string">"#pwd"</span>); 
-        <span class="keyword">var</span> password = $(<span class="string">"#password"</span>); 
-        pwd.focus(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ 
-            pwd.hide(); 
-            password.show().focus(); 
-        }); 
-        password.focusout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>{ 
-            <span class="keyword">if</span>(password.val().trim() === <span class="string">""</span>){ 
-                password.hide(); 
-                pwd.show(); 
-            } 
-        });
-    })
-    <span class="function"><span class="keyword">function</span> <span class="title">placeholderSupport</span>(<span class="params"></span>) </span>{
-        <span class="keyword">return</span> <span class="string">'placeholder'</span> <span class="keyword">in</span> <span class="built_in">document</span>.createElement(<span class="string">'input'</span>);
-    }
-&lt;<span class="regexp">/script&gt;</span>
-</code></pre>
+<h1 id="切换到其他路径和目录"><a href="#切换到其他路径和目录" class="headerlink" title="切换到其他路径和目录"></a>切换到其他路径和目录</h1><ol>
+<li>pwd == ‘print working directory’, 显示当前目录的绝对路径</li>
+<li>ls == ‘list directory contents’,显示当前目录的内容，这个命令有其他参数可选</li>
+<li>cd == ‘change directory’,改变当前目录到指定的目录。如果不指定，则会返回home folder</li>
+</ol>
+<h1 id="处理特殊字符"><a href="#处理特殊字符" class="headerlink" title="处理特殊字符"></a>处理特殊字符</h1><p>如果目录中有特殊字符（空格，括号，引号，[]，!，$，&amp;，*，;，|，\），那么直接输入空格会造成系统识别困难，必须使用特殊的语法来表示这些字符。<br>加入目录名中包含空格<br>解决方法：</p>
+<ol>
+<li>空格前加‘\‘反斜杠 <pre><code>cd public/drop\box/
+</code></pre></li>
+<li>使用引号的方法<pre><code>cd &apos;public/drop box&apos;
+</code></pre></li>
+<li>可以把文件Finder拖到Terminal中来创建绝对路径</li>
+<li>使用Tab键自动补全目录名<br>～在command line中代表当前用户的home folder</li>
+</ol>
+<h1 id="查看隐藏文件"><a href="#查看隐藏文件" class="headerlink" title="查看隐藏文件"></a>查看隐藏文件</h1><p>command line &amp; finder都会隐藏许多文件和文件夹，这些内容是系统需要的。借助command line 可以非常简单地显示这些文件。<br>ls命令会不显示文件名以.开头的文件，但是这些文件可以通过 -a 参数来显示出来。</p>
+<pre><code>vicky$ ls -a
+vicky$ ls -la
+</code></pre><p>-la目的是控制输出格式，输出内容会有.和..两项，分别表示当前文件夹和父文件夹。如果不想显示两项，只需要把-a改成-A即可。</p>
+<h1 id="用command-line管理文件"><a href="#用command-line管理文件" class="headerlink" title="用command-line管理文件"></a>用command-line管理文件</h1><h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><p>cat == concatenate:按照顺序读取文件并输出到Terminal<br>语法： cat Filename<br>cat &gt;&gt; 增加文本内容，如：<br>cat textOne.txt &gt;&gt; textTwo.txt 会把textOne.txt的内容添加到textTwo.txt的结尾</p>
+<h2 id="less"><a href="#less" class="headerlink" title="less"></a>less</h2><p>这个命令更适合用来查看长文本文件，因为它会允许你查找文本。语法为 less后接文件路径，和cat一样。用less命令打开的文件其实和你查看命令使用指南的时候使用的是一个查看器，所以操作是相同的.<br>按Q退出使用指南。</p>
+<h2 id="which"><a href="#which" class="headerlink" title="which"></a>which</h2><p>这个命令会定位某个命令的文件路径。换言之，它会告诉你你执行某个具体命令的时候，在使用哪个文件。语法为which后接某个命令。</p>
+<pre><code>which ls pwd cd
+/bin/ls
+/bin/pwd
+/usr/bin/cd
+</code></pre><h2 id="file"><a href="#file" class="headerlink" title="file"></a>file</h2><p>这个命令会尝试根据文件的内容输出文件类型。如果一个文件缺失了扩展名，那么这个命令可能会非常有用。语法为file后接文件路径。</p>
+<p>如图，此例为一个 PNG 文件，还给出了它的尺寸、颜色数等信息。</p>
+<h2 id="find"><a href="#find" class="headerlink" title="find"></a>find</h2><p>这个命令用来根据搜索关键词定位文件路径。 find命令不使用 Spotlight 搜索服务，但是它允许你设置非常具体的搜索条件，以及通配符（稍后介绍）。语法为find后接搜索的起始路径，后接定义搜索的选项，后接搜索内容（包含在引号里）。</p>
+<p>注意：</p>
+<ol>
+<li>如果你要搜索根目录，也许你想使用-x选项来避免搜索 /Volumes 文件夹。</li>
+<li>如果想使用 Soptlight 搜索服务，使用mdfind命令后接搜索关键词即可。</li>
+</ol>
+<h1 id="使用通配符-（Wildcard-Characters）"><a href="#使用通配符-（Wildcard-Characters）" class="headerlink" title="使用通配符 （Wildcard Characters）"></a>使用通配符 （Wildcard Characters）</h1><p>下面是常用的通配符：</p>
+<ul>
+<li>星号（＊，Asterisk）——代表任何长度的任何字符。例如*.tiff代表所有格式为tiff的文件</li>
+<li>问号（?，Question mark）——代表任何单个字符。例如b?ok匹配 book 但是不匹配 brook。</li>
+<li>方括号（[]，Square brackets）——定义一定范围的字符，例如[Dd]ocument匹配 Document 以及 document；doc[1-9]匹配doc1, doc2, …, doc9。</li>
+</ul>
+<h1 id="使用递归命令"><a href="#使用递归命令" class="headerlink" title="使用递归命令"></a>使用递归命令</h1><p>简单来说，递归命令可以允许命令不执行于一个特定文件，而是指定的路径下的所有文件。大多数命令包含一个-r或者-R选项，来设定你想递归地执行这个命令。</p>
+<h1 id="编辑文件和文件夹"><a href="#编辑文件和文件夹" class="headerlink" title="编辑文件和文件夹"></a>编辑文件和文件夹</h1><h2 id="mkdir"><a href="#mkdir" class="headerlink" title="mkdir"></a>mkdir</h2><p> mkdir == make directory</p>
+<h2 id="cp"><a href="#cp" class="headerlink" title="cp"></a>cp</h2><p> cp == copy<br> 用来把文件从一处复制到另一处。语法为cp后接原始路径，后接目标路径。如果你想复制整个文件夹和所有内容，需要添加-R选项。如果指定的目标路径不含文件名，则 cp 命令会按原名复制。如果指定的目标路径包括文件名，则会复制为你指定的文件名。如果仅指定新文件名，则会在原处以新名称创建文件副本。注意，系统会自动替换同名文件而不出现提示。</p>
+<h2 id="mv"><a href="#mv" class="headerlink" title="mv"></a>mv</h2><p> mv == move<br> 用来移动文件。语法为mv后接原路径，后接新路径。mv 的指定路径规则和 cp 是一样的（没错，如果仅指定新文件名，它就成了重命名命令）。</p>
+<h2 id="rm"><a href="#rm" class="headerlink" title="rm"></a>rm</h2><p> rm ==remove<br> 会永久删除文件。注意，command-line中没有废纸篓。语法为rm后接文件路径。然而，使用 rm 命令删除的文件有可能可以通过数据恢复工具恢复。如果希望安全删除文件，可以使用srm命令。</p>
+<h2 id="rmdir-amp-rm-R"><a href="#rmdir-amp-rm-R" class="headerlink" title="rmdir &amp; rm -R"></a>rmdir &amp; rm -R</h2><p> rmdir == remove directory<br> 这个命令会永久删除文件夹。再强调一遍，CLI 中木有废纸篓。语法为rmdir后接希望删除目录的路径。然而，rmdir 命令无法删除含有任何其他文件的文件夹，所以大多数情形下rmdir命令是不适用的。不过，你可以利用rm添加-R选项来删除文件夹及包含的所有文件。</p>
+<h2 id="vi"><a href="#vi" class="headerlink" title="vi"></a>vi</h2><p> vi == visual<br> 和less命令类似，vi命令会占用整个 Terminal 空间来显示文件内容。打开后，在“command模式”，vi 会等你输入一些预定义字符来告诉 vi 你想做什么。你也可以使用键盘上的箭头键单纯地浏览文件。<br> a -&gt; 编辑状态<br> 要想保存，需要先退出编辑模式进入command模式，方法是按下esc。<br> 回到command后，按住shift同时按两次z来保存并退出<br> 如果不想保存，在command模式下输入:quit!并按enter直接退出。</p>
+<h1 id="用command-line-管理系统"><a href="#用command-line-管理系统" class="headerlink" title="用command line 管理系统"></a>用command line 管理系统</h1><h2 id="使用su来切换用户"><a href="#使用su来切换用户" class="headerlink" title="使用su来切换用户"></a>使用su来切换用户</h2><p> su == substitute user identity<br> 允许你在命令行中轻松切换到另一个用户账户。语法为su后接用户的短名称。然后会要求你输入密码（但是输入的时候不会显示）。执行完毕后，命令的前缀会改变，表示你拥有其他用户的权利。你可以利用who -m命令来验证当前登陆的身份。切换后，你会一直保持该用户身份，直至退出 Terminal 或者输入exit命令。</p>
+<h2 id="关于sudo的使用"><a href="#关于sudo的使用" class="headerlink" title="关于sudo的使用"></a>关于sudo的使用</h2><h3 id="sudo概述"><a href="#sudo概述" class="headerlink" title="sudo概述"></a>sudo概述</h3><p>sudo == super user do<br>用sudo执行一个命令会使用 root 账户权限。当然，使用之前需要 administrator 账户（管理员账户）的授权（如输入密码）。</p>
+<p>默认情况下，任何管理员账户都可以使用sudo来获取 root 权限，甚至当 root 账户在图形界面被禁用的情况下，sudo依然有效。这个命令是很多情况下我们不得不使用 Terminal 的原因，——同样也是给每个用户管理员身份的危险所在。不过，你可以调整sudo的配置文件，来限制它的使用。<br>提示：如果由于你忘了使用sudo而导致命令行返回一个错误，只需输入sudo !!就可以用sudo来执行上一条指令。</p>
+<p>记住，权力越大责任越大。不恰当地使用sudo可以轻易破坏你的系统设置。命令行只会在你第一次执行严重破坏性行为之前提示你，之后，它就会假设你清楚自己正在干什么。如果你只掌握三条使用命令行的准则，那将是：总是仔细检查你的命令；总是使用Tab completion来帮助你避免拼写错误；使用sudo之前，总是仔仔细细检查你的命令。</p>
+<h3 id="使用sudo切换shell"><a href="#使用sudo切换shell" class="headerlink" title="使用sudo切换shell"></a>使用sudo切换shell</h3><p>如果你是一个管理员用户，你需要执行很多条需要 root 权限的命令，你可以临时切换整个命令行 shell 来取得 root 级别的访问权限。方法就是先输入sudo -s，回车后再键入你的密码。</p>
+<h1 id="其他command-line技巧提示"><a href="#其他command-line技巧提示" class="headerlink" title="其他command line技巧提示"></a>其他command line技巧提示</h1><ul>
+<li>输入命令open .可以用 Finder 打开当前的位置。</li>
+<li>在 Terminal 的偏好里面可以设定它的外观和风格。</li>
+<li>中止一个错误的或者发疯的命令，可以使用组合键control+C</li>
+<li>你可以在执行前编辑命令，只需要使用箭头和键盘上的其他字母。</li>
+<li>没有输入任何命令时，你可以用▲和▼来浏览历史命令。同样可以编辑和再次执行。</li>
+<li>你也可以使用history命令查看历史记录。</li>
+<li>你可以使用组合键control + L清屏。</li>
+</ul>
 </span>
       
     </div>
@@ -276,7 +299,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/incompatibility/" rel="tag">#incompatibility</a>
+            <a href="/tags/tools/" rel="tag">#tools</a>
           
         </div>
       
@@ -285,13 +308,11 @@
         <div class="post-nav">
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/10/28/differencesbetweenattrandprop/" rel="prev">attr 和 prop之间的差异</a>
-            
           </div>
 
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/20/Website-Collection/" rel="next">Website Collection</a>
+              <a href="/2016/10/29/jqueryextensions/" rel="next">编写jQuery插件</a>
             
           </div>
         </div>
@@ -460,8 +481,8 @@
         
           <div class="comments" id="comments">
             
-              <div class="ds-thread" data-thread-key="2016/10/28/fixplaceholderinie/"
-                   data-title="解决placeholder兼容性问题" data-url="http://yoursite.com/2016/10/28/fixplaceholderinie/">
+              <div class="ds-thread" data-thread-key="2016/12/13/maccommandline/"
+                   data-title="Mac 命令大全" data-url="http://yoursite.com/2016/12/13/maccommandline/">
               </div>
             
           </div>
@@ -553,7 +574,7 @@
           <div class="post-toc">
             
             
-              <p class="post-toc-empty">This post does not have a Table Of Contents</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#切换到其他路径和目录"><span class="nav-number">1.</span> <span class="nav-text">切换到其他路径和目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#处理特殊字符"><span class="nav-number">2.</span> <span class="nav-text">处理特殊字符</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#查看隐藏文件"><span class="nav-number">3.</span> <span class="nav-text">查看隐藏文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用command-line管理文件"><span class="nav-number">4.</span> <span class="nav-text">用command-line管理文件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#cat"><span class="nav-number">4.1.</span> <span class="nav-text">cat</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#less"><span class="nav-number">4.2.</span> <span class="nav-text">less</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#which"><span class="nav-number">4.3.</span> <span class="nav-text">which</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#file"><span class="nav-number">4.4.</span> <span class="nav-text">file</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#find"><span class="nav-number">4.5.</span> <span class="nav-text">find</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用通配符-（Wildcard-Characters）"><span class="nav-number">5.</span> <span class="nav-text">使用通配符 （Wildcard Characters）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用递归命令"><span class="nav-number">6.</span> <span class="nav-text">使用递归命令</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#编辑文件和文件夹"><span class="nav-number">7.</span> <span class="nav-text">编辑文件和文件夹</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#mkdir"><span class="nav-number">7.1.</span> <span class="nav-text">mkdir</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#cp"><span class="nav-number">7.2.</span> <span class="nav-text">cp</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mv"><span class="nav-number">7.3.</span> <span class="nav-text">mv</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rm"><span class="nav-number">7.4.</span> <span class="nav-text">rm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#rmdir-amp-rm-R"><span class="nav-number">7.5.</span> <span class="nav-text">rmdir & rm -R</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#vi"><span class="nav-number">7.6.</span> <span class="nav-text">vi</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用command-line-管理系统"><span class="nav-number">8.</span> <span class="nav-text">用command line 管理系统</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#使用su来切换用户"><span class="nav-number">8.1.</span> <span class="nav-text">使用su来切换用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#关于sudo的使用"><span class="nav-number">8.2.</span> <span class="nav-text">关于sudo的使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#sudo概述"><span class="nav-number">8.2.1.</span> <span class="nav-text">sudo概述</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#使用sudo切换shell"><span class="nav-number">8.2.2.</span> <span class="nav-text">使用sudo切换shell</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他command-line技巧提示"><span class="nav-number">9.</span> <span class="nav-text">其他command line技巧提示</span></a></li></ol></div>
             
           </div>
           <div class="post-toc-indicator-bottom post-toc-indicator"></div>
